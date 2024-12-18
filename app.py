@@ -7,7 +7,7 @@ from tensorflow.keras.preprocessing.image import img_to_array
 app = Flask(__name__)
 
 # Load the saved model
-MODEL_PATH = "C:/project/models/7.keras"
+MODEL_PATH = "models/7.keras"
 model = load_model(MODEL_PATH)
 
 # Class names (from your dataset)
