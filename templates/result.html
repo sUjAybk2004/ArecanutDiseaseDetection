@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Upload Result</title>
+{#    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">#}
+    <style>
+        body {
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            margin: 0;
+            background-image: url("{{ url_for('static',filename='images/result baground.jpg')}}");
+            background-size: cover; /* Ensures the image covers the entire background */
+            background-position: bottom; /* Centers the image */
+            background-repeat: no-repeat;
+            height: 100vh; /* Ensures the body takes up full viewport height */
+            color: #333;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background: #b2c9be;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+            width: 400px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        input[type="file"] {
+            display: block;
+            margin: 15px auto;
+        }
+
+        #previewContainer {
+            margin-top: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 10px;
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f9f9f9;
+        }
+
+        #previewContainer img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #77d3e3;
+        }
+
+        .details-card {
+            background: #f4f4f4;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: left;
+            margin-top: 20px;
+        }
+
+        .details-card p {
+            margin: 10px 0;
+            font-size: 14px;
+        }
+
+        .error {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <!-- <div class="container"><!DOCTYPE html> -->
+<html lang="en">
+<body>
+    <div class="container">
+        <h1>Prediction Result</h1>
+        <div class="result-box">
+            <h3><strong>Predicted Class:</strong></h3> <h2 style="color: rgb(215,18,41);">{{ predicted_class }}</h2>
+            {% if pathogen != "N/A" and intensity != "N/A" %}
+                <h3><strong>Pathogen :</strong></h3>
+                <h2 style="color: rgb(225,9,34);">{{ pathogen }}</h2>
+
+                <h3><strong>Intensity :</strong></h3>
+                <h2 style="color: rgb(236,14,55);">{{ intensity }}</h2>
+            {% endif %}
+
+            {% if predicted_class=="Chukki Roga": %}
+                <h3><strong> Remedies : </strong></h3>
+                <h4 style="color: rgb(46,43,37);">Collection and destruction of diseased plant parts helps in reduction of inoculum load of this disease.
+                    Spraying of 0.3 per cent Mancozeb or 0.2 per cent Foltaf results in effective management for this disease.</h4>
+            {% endif %}
+
+            {% if predicted_class=="Kole Roga": %}
+                <h3><strong> Remedies : </strong></h3>
+                <h4 style="color: rgb(39,33,31);">Prophylactic spraying with 1 % Bordeaux mixture gives satisfactory control of the disease. Two sprayings are generally required, first after the premonsoon showers and the second 40-45 days thereafter Kole roga
+            {% endif %}
+        </div>
+        <button class="button" onclick="window.history.back()">Upload Another Image</button>
+    </div>
+
+</body>
+</html>
